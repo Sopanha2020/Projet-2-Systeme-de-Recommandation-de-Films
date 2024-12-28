@@ -1,4 +1,4 @@
-# 🎥 Projet-2-Group-Moving-Frame-Systeme-de-recommandation-de-films
+# 🎥 Systeme-de-Recommandation-de-Films
 ## Introduction:
 
 ![header](https://github.com/user-attachments/assets/e017c740-7cd0-42ba-9366-fb37761a1fe6)
