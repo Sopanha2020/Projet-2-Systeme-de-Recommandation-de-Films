@@ -58,9 +58,9 @@ Outils principaux : power-point, DataPane, Streamlit
 
 
 ## 🎬 Source des données :  
--[base IMDb](https://datasets.imdbws.com/)   
+-[Données IMDb](https://datasets.imdbws.com/)   
+-[Données TMDB](https://drive.google.com/file/d/1VB5_gl1fnyBDzcIOXZ5vUSbCY68VZN1v/view)   
 -[Explication datasets](https://www.imdb.com/interfaces/)  
--[API Omdb](https://www.omdbapi.com/)
 
 
 ## 📎 Méthodologie technique :
