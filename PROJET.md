@@ -71,16 +71,20 @@ L’objectif n’est pas d’arriver à un travail parfait, mais que le système
 
 ## Missions et Livrables Attendus
 **Missions**
+
 * Faire une présentation pour présenter votre travail, expliquer votre démarche, les outils utilisés, les difficultés rencontrées, et des pistes d’amélioration.
 * Présenter les indicateurs statistiques et KPI pertinents sur les films.
 * Créer un système de recommandation de film en utilisant des algorithmes de machine learning et faire une démonstration de ces recommandations sur des films proposés en séance par le client.
+  
 **Livrables**
+
 * Un notebook contenant l’exploration et le nettoyage des données ainsi que les visualisations. Vous expliquerez vos choix de nettoyage et vos conclusions d’exploration dans un document de votre choix.
 * Un dashboard présentant les KPI pertinents.
 * Un notebook pour l’étape Système de recommandation avec le code source avec vos commentaires.
 
 ## Documentation:
 **IMDb Dataset Details**
+
 Each dataset is contained in a gzipped, tab-separated-values (TSV) formatted file in the UTF-8 character set. The first line in each file contains headers that describe what is in each column. A ‘\N’ is used to denote that a particular field is missing or null for that title/name. The available datasets are as follows:
 
 title.akas.tsv.gz - Contains the following information for titles:
@@ -142,6 +146,7 @@ name.basics.tsv.gz – Contains the following information for names:
 * knownForTitles (array of tconsts) – titles the person is known for
   
 **TMDB Dataset Details**
+
 * adult : Un champ indiquant si le film est destiné à un public adulte, avec les valeurs “true” ou “false”.
 * backdrop_path : Le chemin d’accès à l’image de fond associée au film, utilisée à des fins de marketing et de promotion.
 * budget : Le budget du film, généralement en dollars ou dans la devise de référence.
