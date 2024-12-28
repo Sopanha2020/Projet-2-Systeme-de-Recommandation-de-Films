@@ -1,4 +1,4 @@
-# 🎥 Projet-2-Group-Moving-Frame-Systeme-de-recommandation-de-films
+# 🎥 Projet-2-Group-Moving-Frame-Systeme-de-Recommandation-de-Films
 
 C'est le résultat du deuxième projet réalisé lors de ma formation en tant que _DATA ANALYST_ à la **Wild Code School** à Lille.
 
