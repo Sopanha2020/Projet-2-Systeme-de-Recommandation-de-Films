@@ -1,6 +1,7 @@
 # 🎥 Projet-2-Group-Moving-Frame-Systeme-de-recommandation-de-films
 ## Introduction
 
+![header](https://github.com/user-attachments/assets/e017c740-7cd0-42ba-9366-fb37761a1fe6)
 
 « Netflix est un service de diffusion en streaming qui permet à ses membres de regarder une grande variété de séries TV, films, documentaires, etc. sur des milliers d’appareils connectés à Internet. »
 
