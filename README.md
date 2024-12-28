@@ -34,7 +34,7 @@ Score supérieur ou égal à 7 /10 sur les plateformes de notation (e.g., IMDb, 
 
 #### Semaine 1 :  
 Appropriation et première exploration des données     
-Outils principaux : Pandas, Matplotlib, jupyterLab   
+Outils principaux : Jupyter, pandas, gzip   
 
 [LIEN DIAGRAMME DE RETRAVAIL DES TABLES 💪 🕺](https://drive.google.com/file/d/17TfOcP2BalAt5omnFj4_L5hGJK4bfPqt/view?usp=sharing)
 
