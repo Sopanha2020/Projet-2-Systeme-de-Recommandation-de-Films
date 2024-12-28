@@ -5,6 +5,30 @@ C'est le résultat du deuxième projet réalisé lors de ma formation en tant qu
 ## 🎯 Objectif du Projet :
 
 Le système de recommandation de films est mis en place pour le compte d'un gérant de cinéma de la Creuse afin de lui aider à choisir des films pour ses clients locaux.
+Les KPIs sont définis pour évaluer les films susceptibles de correspondre aux goûts locaux.
+
+1. Période de sortie des films :
+
+Films sortis entre 1975 et 1995.
+
+2. Nationalité des films :
+
+Origine : Française et Américaine.
+
+3. Catégories :
+
+4. Films appartenant aux genres :
+    Comédie
+    Famille
+    Drama
+   
+5. Notes des films :
+
+Score supérieur ou égal à 7 /10 sur les plateformes de notation (e.g., IMDb, TMDB).
+
+6. Durée des films :
+
+À définir selon les préférences locales (proposer des durées moyennes entre 80 min et 240 min).
 
 ## ✅ Etapes : 
 
