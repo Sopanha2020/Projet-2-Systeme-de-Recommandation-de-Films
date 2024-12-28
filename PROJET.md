@@ -12,6 +12,7 @@ Lorsqu’on accède au service Netflix, le système de recommandations aide l’
 **Votre client n’est pas Netflix, mais il a de grandes ambitions !**
 ## Objectif & Enjeux:
 
+![creuse](https://github.com/user-attachments/assets/965a1143-d465-40a0-9c5e-07f1a228c11b)
 
 Vous êtes un Data Analyst freelance. Un cinéma en perte de vitesse situé dans la Creuse vous contacte. Il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.
 
