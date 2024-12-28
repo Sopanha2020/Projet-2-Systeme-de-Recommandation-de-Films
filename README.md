@@ -1,10 +1,10 @@
 # 🎥 Projet-2-Group-Moving-Frame-Systeme-de-recommandation-de-films
 
-Il s'agit ici du résultat du second projet mené pendant ma formation _DATA ANALYST_ à la **Wild Code School** à Lille.
+C'est le résultat du deuxième projet réalisé lors de ma formation en tant que _DATA ANALYST_ à la **Wild Code School** à Lille.
 
 ## 🎯 Objectif du Projet :
 
-Création d'un système de recommandation de films pour le compte d'un gérant de cinéma situé dans la Creuse afin de l'aider à selectionner des films pour ses clients locaux.
+Le système de recommandation de films est mis en place pour le compte d'un gérant de cinéma de la Creuse afin de lui aider à choisir des films pour ses clients locaux.
 
 ## ✅ Etapes : 
 
