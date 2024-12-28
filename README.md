@@ -58,21 +58,28 @@ Outils principaux : jupyter, Pandas
 Recherche de corrélation, visualisation     
 Outils principaux : jupyter, Pandas, Seaborn, matplotlib
 
+![Capture8](https://github.com/user-attachments/assets/36532d5f-4911-40dc-9952-b392ee903287)
 
+![Capture9](https://github.com/user-attachments/assets/ec2d184d-192e-4dc2-925f-c3b156f2e11e)
 
+![Capture10](https://github.com/user-attachments/assets/14c38f5b-e38d-4d75-9f58-c77aa0c49f11)
 
+![Capture11](https://github.com/user-attachments/assets/a695aed4-a6b9-45d4-935c-abec6825b53f)
+
+![Capture12](https://github.com/user-attachments/assets/52c5e3be-8604-46f9-8f0c-5c0a952a6543)
+
+![Capture13](https://github.com/user-attachments/assets/e386ddfa-554d-41dd-bb8f-40f2b33be90e)
+
+![Capture14](https://github.com/user-attachments/assets/9aeba95f-8231-4c65-9b40-2ed3e28d32fa)
 
 #### Semaine 4 :   
 Machine learning, recommandations    
 Outils principaux : scikit-learn, Streamlit, jupyterLab, GitHub 
 
-[LIEN APPLICATION UTILISATEUR SOUS STREMLIT ⭐ ♥️ ](https://camillemagnette-systeme-de-recommandation-ma-app-acteurs-k992u6.streamlit.app/)
 
 #### Semaine 5 :  
 Affinage, présentation et Demo Day
 Outils principaux : power-point, DataPane, Streamlit 
-
-[LIEN PRESENTATION](https://drive.google.com/file/d/1OIF1iphDbTM9wzEyo2xPHQg5SVK1z_EW/view?usp=sharing)
 
 
 ## 🎬 Source des données :  
