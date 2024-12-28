@@ -46,7 +46,7 @@ Outils principaux : jupyter, pandas, gzip
 
 #### Semaine 2 : 
 Jointures, filtres, nettoyage,     
-Outils principaux : jupyter, Pandas
+Outils principaux : jupyter, pandas
 
 ![Capture5](https://github.com/user-attachments/assets/36e0fd44-b3bb-4b4c-b310-765e2a7c83b2)
 
@@ -56,7 +56,7 @@ Outils principaux : jupyter, Pandas
 
 #### Semaine 3 : 
 Recherche de corrélation, visualisation     
-Outils principaux : jupyter, Pandas, Seaborn, matplotlib
+Outils principaux : jupyter, pandas, seaborn, matplotlib
 
 ![Capture8](https://github.com/user-attachments/assets/36532d5f-4911-40dc-9952-b392ee903287)
 
@@ -74,21 +74,24 @@ Outils principaux : jupyter, Pandas, Seaborn, matplotlib
 
 #### Semaine 4 :   
 Machine learning, recommandations    
-Outils principaux : scikit-learn, Streamlit, jupyterLab, GitHub 
+Outils principaux : jupyter, scikit-learn, nlptk
+
+
 
 
 #### Semaine 5 :  
 Affinage, présentation et Demo Day
-Outils principaux : power-point, DataPane, Streamlit 
+Outils principaux : jupyter, powerpoint, streamlit 
 
 
-## 🎬 Source des données :  
+
+## 🎬 Source des Données :  
 -[Données IMDb](https://datasets.imdbws.com/)   
 -[Données TMDB](https://drive.google.com/file/d/1VB5_gl1fnyBDzcIOXZ5vUSbCY68VZN1v/view)   
 -[Explication datasets](https://www.imdb.com/interfaces/)  
 
 
-## 📎 Méthodologie technique :
+## 📎 Méthodologie Technique :
 
 1) [Nettoyage de l'ensemble des fichiers sources](https://github.com/CamilleMagnette/Systeme_de_recommandation_machine_learning/blob/main/JupyterlabNotebooks/Projet%202%20-%20Nettoyage%20des%20donn%C3%A9es.ipynb) pour n'en former que deux : 
 -  un premier très macro pour réaliser notre analyse,
