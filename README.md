@@ -48,15 +48,18 @@ Outils principaux : jupyter, pandas, gzip
 Jointures, filtres, nettoyage,     
 Outils principaux : jupyter, Pandas
 
+![Capture5](https://github.com/user-attachments/assets/36e0fd44-b3bb-4b4c-b310-765e2a7c83b2)
 
+![Capture6](https://github.com/user-attachments/assets/2e458362-855b-4472-bf58-49f938247165)
 
-[LIEN ANALYSE DES DONNEES SOUS DATAPANE 💡 📊](https://cloud.datapane.com/reports/VkGQlN3/exploration-des-donn%C3%A9es/)
+![Capture7](https://github.com/user-attachments/assets/41220518-930b-4845-a233-4eae2dccb772)
+
 
 #### Semaine 3 : 
 Recherche de corrélation, visualisation     
 Outils principaux : jupyter, Pandas, Seaborn, matplotlib
 
-[LIEN ANALYSE DES DONNEES SOUS DATAPANE 💡 📊](https://cloud.datapane.com/reports/VkGQlN3/exploration-des-donn%C3%A9es/)
+
 
 #### Semaine 4 :   
 Machine learning, recommandations    
