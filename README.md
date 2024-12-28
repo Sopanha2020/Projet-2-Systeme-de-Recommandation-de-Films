@@ -54,10 +54,11 @@ Outils principaux : jupyter, Pandas
 
 ![Capture7](https://github.com/user-attachments/assets/41220518-930b-4845-a233-4eae2dccb772)
 
-
 #### Semaine 3 : 
 Recherche de corrélation, visualisation     
 Outils principaux : jupyter, Pandas, Seaborn, matplotlib
+
+
 
 
 
