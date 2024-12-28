@@ -18,9 +18,9 @@ Origine : Française et Américaine.
 3. Catégories :
 
 Films appartenant aux genres :
-    * Comédie
-    * Famille
-    * Drama
+     Comédie,
+     Famille,
+     Drama
    
 4. Notes des films :
 
