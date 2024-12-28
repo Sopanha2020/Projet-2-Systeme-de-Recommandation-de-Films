@@ -17,16 +17,16 @@ Origine : Française et Américaine.
 
 3. Catégories :
 
-4. Films appartenant aux genres :
-    Comédie
-    Famille
-    Drama
+Films appartenant aux genres :
+    * Comédie
+    * Famille
+    * Drama
    
-5. Notes des films :
+4. Notes des films :
 
 Score supérieur ou égal à 7 /10 sur les plateformes de notation (e.g., IMDb, TMDB).
 
-6. Durée des films :
+5. Durée des films :
 
 À définir selon les préférences locales (proposer des durées moyennes entre 80 min et 240 min).
 
