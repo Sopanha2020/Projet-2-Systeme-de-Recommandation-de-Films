@@ -34,9 +34,15 @@ Score supérieur ou égal à 7 /10 sur les plateformes de notation (e.g., IMDb, 
 
 #### Semaine 1 :  
 Appropriation et première exploration des données     
-Outils principaux : Jupyter, pandas, gzip   
+Outils principaux : jupyter, pandas, gzip   
 
-[LIEN DIAGRAMME DE RETRAVAIL DES TABLES 💪 🕺](https://drive.google.com/file/d/17TfOcP2BalAt5omnFj4_L5hGJK4bfPqt/view?usp=sharing)
+![Capture1](https://github.com/user-attachments/assets/a3a81c9a-873c-497a-9610-2f5fd72a80a6)
+
+![Capture2](https://github.com/user-attachments/assets/95597d23-bb75-4230-9a31-08faff664343)
+
+![Capture3](https://github.com/user-attachments/assets/0885c1f6-8e1f-4b33-946d-4572f9d3db3f)
+
+![Capture4](https://github.com/user-attachments/assets/c3f91bd0-06c3-4590-93de-23c83437e821)
 
 #### Semaine 2 et 3 : 
 Jointures, filtres, nettoyage, recherche de corrélation     
