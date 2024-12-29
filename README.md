@@ -56,7 +56,7 @@ Outils principaux : jupyter, pandas
 
 #### Semaine 3 : 
 Recherche de corrélation, visualisation     
-Outils principaux : jupyter, pandas, seaborn, matplotlib
+Outils principaux : google colab, pandas, seaborn, matplotlib
 
 ![Capture8](https://github.com/user-attachments/assets/36532d5f-4911-40dc-9952-b392ee903287)
 
@@ -74,14 +74,14 @@ Outils principaux : jupyter, pandas, seaborn, matplotlib
 
 #### Semaine 4 :   
 Machine learning, recommandations    
-Outils principaux : jupyter, scikit-learn, nlptk
+Outils principaux : goole colab, scikit-learn, nlptk
 
 
 
 
 #### Semaine 5 :  
 Affinage, présentation et Demo Day
-Outils principaux : jupyter, powerpoint, streamlit 
+Outils principaux : google colab, google slide, streamlit 
 
 
 
@@ -93,21 +93,23 @@ Outils principaux : jupyter, powerpoint, streamlit
 
 ## 📎 Livrables
 
-* Nettoyage, exploration, visualisation des données : ouvrez les notebooks correspondants dans Jupyter ou Google Colab : [Notebook](https://github.com/Dim2960/flixoucreuse/exploration_visualisation).
+* Exploration et infiltrage des données : ouvrez les notebooks correspondants dans Jupyter : [Notebook](https://github.com/Dim2960/flixoucreuse/exploration_visualisation).
+* Nettoyage et visualisation des données : ouvrez les notebooks correspondants dans Google Colab : [Notebook](https://github.com/Dim2960/flixoucreuse/exploration_visualisation).
 * Application : ouvrez à partir de l'url suivante : [appli-streamlit](https://flixoucreuse.streamlit.app/)
 
 ## 📡 Installation
+
 0. Prérequis d'installation
     
-    ![Flixoucreuse](img/python-color.svg) Python >= 2.12
+    Python >= 2.12
     
 1. Clonez le dépôt:
     ```sh
-    git clone https://github.com/Dim2960/flixoucreuse.git
+    git clone https://github.com/Sopanha2020/Projet-2-Group-Moving-Frame-Systeme-de-Recommandation-de-Films.git
     ```
 2. Allez dans le répertoire du projet:
     ```sh
-    cd flixoucreuse
+    cd Projet-2-Group-Moving-Frame-Systeme-de-Recommandation-de-Films
     ```
 3. Installez les dépendances:
     ```sh
