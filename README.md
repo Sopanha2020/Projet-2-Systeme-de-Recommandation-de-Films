@@ -90,19 +90,44 @@ Outils principaux : jupyter, powerpoint, streamlit
 -[Données TMDB](https://drive.google.com/file/d/1VB5_gl1fnyBDzcIOXZ5vUSbCY68VZN1v/view)   
 -[Explication datasets](https://www.imdb.com/interfaces/)  
 
+## 📎Technologies
+| Languages | Librairies python | Outils |
+|-----------|------------------|--------|
+| ![python](img/python-color.svg) Python | ![numpy](img/numpy-color.svg) numpy | ![jupiter](img/jupyter-color.svg) Jupiter Notebook |
+| ![html](img/html5-color.svg) HTML | ![pandas](img/pandas-color.svg) pandas | ![github](img/github-color.svg) Github |
+| ![css](img/css3-color.svg) css | ![matplotlib](img/python-color.svg) matplotlib | ![vscode](img/visualstudiocode-color.svg) VS code |
+| | ![seaborn](img/python-color.svg) seaborn | ![colab](img/googlecolab-color.svg) google colab |
+| | ![scikit-learn](img/scikitlearn-color.svg) scitkit-learn | ![discord](img/discord-color.svg) Discord |
+| | ![streamlit](img/streamlit-color.svg) streamlit | |
 
-## 📎 Méthodologie Technique :
+## Livrables
 
-1) [Nettoyage de l'ensemble des fichiers sources](https://github.com/CamilleMagnette/Systeme_de_recommandation_machine_learning/blob/main/JupyterlabNotebooks/Projet%202%20-%20Nettoyage%20des%20donn%C3%A9es.ipynb) pour n'en former que deux : 
--  un premier très macro pour réaliser notre analyse,
--  un second pour réaliser notre algorithme
+* Nettoyage, exploration, visualisation des données : ouvrez les notebooks correspondants dans Jupyter ou Google Colab : [Notebook](https://github.com/Dim2960/flixoucreuse/exploration_visualisation).
+* Application : ouvrez à partir de l'url suivante : [appli-streamlit](https://flixoucreuse.streamlit.app/)
 
-2) [Analyse de la base de données](https://github.com/CamilleMagnette/Systeme_de_recommandation_machine_learning/blob/main/JupyterlabNotebooks/Projet%202%20-%20Graphiques%20Plotly%20avec%20donn%C3%A9es%20nettoy%C3%A9es.ipynb) via le 1er fichier nettoyé : mise en forme de graphiques via [datapane](https://cloud.datapane.com/reports/VkGQlN3/exploration-des-donn%C3%A9es/)
+## Installation
+0. Prérequis d'installation
+    
+    ![Flixoucreuse](img/python-color.svg) Python >= 2.12
+    
+1. Clonez le dépôt:
+    ```sh
+    git clone https://github.com/Dim2960/flixoucreuse.git
+    ```
+2. Allez dans le répertoire du projet:
+    ```sh
+    cd flixoucreuse
+    ```
+3. Installez les dépendances:
+    ```sh
+    pip install -r requirements.txt
+    ```
+4. Ajouter la clé API tmdb pour utilisation en local:  
+    ```
+    Copier votre clé API tmdb dans le fichier api.txt
+    ```
+5. Lancer l'application en local:
+    ```sh
+    streamlit run index.py
+    ```
 
-3) [Préparation de notre 2nd fichier nettoyé pour le machine learning](https://github.com/CamilleMagnette/Systeme_de_recommandation_machine_learning/blob/main/JupyterlabNotebooks/Projet%202-%20Pr%C3%A9paration%20du%20fichier%20pour%20le%20machine%20learning.ipynb) : transformation en format pickle et split des colonnes non numériques 
-
-4) [Tests de machine learning](http://localhost:8891/lab/tree/Documents/FORMATION%20DATA%20ANALYST/COURS%20DATA%20ANALYST/PROJET%202/JUPITERLAB%20NOTEBOOKS/Projet%202%20-%20Machine%20learning%20TEST%20ACTEURS.ipynb) : normalisation des données et mise en place d'un algorithme basé sur les plus proches voisins (algorithme K-nearest neighbors (kNN))
-
-5) [Mise en place de l’application utilisateur Streamlit](https://github.com/CamilleMagnette/Systeme_de_recommandation_machine_learning/blob/main/app_acteurs.py)
-
-6) [Publication de l'interface utilisateur Streamlit](https://camillemagnette-systeme-de-recommandation-ma-app-acteurs-k992u6.streamlit.app/)
