@@ -36,7 +36,7 @@ Score supérieur ou égal à 7 /10 sur les plateformes de notation (e.g., IMDb, 
 Appropriation et première exploration des données     
 Outils principaux : jupyter, pandas, gzip   
 
-![Capture1](https://github.com/user-attachments/assets/a3a81c9a-873c-497a-9610-2f5fd72a80a6)
+![Capture15](https://github.com/user-attachments/assets/8a387e9e-f3ca-48f2-945a-de246742786d)
 
 ![Capture2](https://github.com/user-attachments/assets/95597d23-bb75-4230-9a31-08faff664343)
 
@@ -74,7 +74,7 @@ Outils principaux : google colab, pandas, seaborn, matplotlib
 
 #### Semaine 4 :   
 Machine learning, recommandations    
-Outils principaux : goole colab, scikit-learn, nlptk
+Outils principaux : google colab, scikit-learn, nlptk
 
 
 
