@@ -93,7 +93,7 @@ Outils principaux : google colab, google slide, streamlit
 
 ## 📎 Livrables
 
-* Exploration et infiltrage des données : ouvrez les notebooks correspondants dans Jupyter : [Notebook](https://github.com/Dim2960/flixoucreuse/exploration_visualisation).  
+* Exploration et infiltrage des données : ouvrez les notebooks correspondants dans Jupyter : [Notebook](https://github.com/Sopanha2020/Projet-2-Group-Moving-Frame-Systeme-de-Recommandation-de-Films/blob/main/Notebooks/TMDB%20IMDB%20Data%20Wrangling.ipynb).  
 * Nettoyage et visualisation des données : ouvrez les notebooks correspondants dans Google Colab : [Notebook](https://github.com/Sopanha2020/Projet-2-Group-Moving-Frame-Systeme-de-Recommandation-de-Films/blob/main/Notebooks/Film_Recommendation_System.ipynb).
 * Application : ouvrez à partir de l'url suivante : [appli-streamlit](https://movingframe.streamlit.app/).
 
