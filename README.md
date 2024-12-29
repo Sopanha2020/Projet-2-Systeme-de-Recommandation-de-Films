@@ -92,7 +92,7 @@ Outils principaux : google colab, scikit-learn, nlptk
 Affinage, présentation et Demo Day
 Outils principaux : google colab, google slide, streamlit 
 
-
+![Capture22](https://github.com/user-attachments/assets/e651ee0d-eab8-4bac-ac41-7b872bcb9389)
 
 ## 🎬 Source des Données :  
 -[Données IMDb](https://datasets.imdbws.com/)   
