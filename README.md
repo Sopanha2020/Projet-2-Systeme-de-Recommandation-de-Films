@@ -90,22 +90,13 @@ Outils principaux : jupyter, powerpoint, streamlit
 -[Données TMDB](https://drive.google.com/file/d/1VB5_gl1fnyBDzcIOXZ5vUSbCY68VZN1v/view)   
 -[Explication datasets](https://www.imdb.com/interfaces/)  
 
-## 📎Technologies
-| Languages | Librairies python | Outils |
-|-----------|------------------|--------|
-| ![python](img/python-color.svg) Python | ![numpy](img/numpy-color.svg) numpy | ![jupiter](img/jupyter-color.svg) Jupiter Notebook |
-| ![html](img/html5-color.svg) HTML | ![pandas](img/pandas-color.svg) pandas | ![github](img/github-color.svg) Github |
-| ![css](img/css3-color.svg) css | ![matplotlib](img/python-color.svg) matplotlib | ![vscode](img/visualstudiocode-color.svg) VS code |
-| | ![seaborn](img/python-color.svg) seaborn | ![colab](img/googlecolab-color.svg) google colab |
-| | ![scikit-learn](img/scikitlearn-color.svg) scitkit-learn | ![discord](img/discord-color.svg) Discord |
-| | ![streamlit](img/streamlit-color.svg) streamlit | |
 
-## Livrables
+## 📎 Livrables
 
 * Nettoyage, exploration, visualisation des données : ouvrez les notebooks correspondants dans Jupyter ou Google Colab : [Notebook](https://github.com/Dim2960/flixoucreuse/exploration_visualisation).
 * Application : ouvrez à partir de l'url suivante : [appli-streamlit](https://flixoucreuse.streamlit.app/)
 
-## Installation
+## 📡 Installation
 0. Prérequis d'installation
     
     ![Flixoucreuse](img/python-color.svg) Python >= 2.12
@@ -130,4 +121,3 @@ Outils principaux : jupyter, powerpoint, streamlit
     ```sh
     streamlit run index.py
     ```
-
