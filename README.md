@@ -76,8 +76,17 @@ Outils principaux : google colab, pandas, seaborn, matplotlib
 Machine learning, recommandations    
 Outils principaux : google colab, scikit-learn, nlptk
 
+![Capture16](https://github.com/user-attachments/assets/5905b835-1e9d-4c3e-ab6a-a4e954f1c939)
 
+![Capture17](https://github.com/user-attachments/assets/13c0718a-2550-42f0-b444-516982beeca0)
 
+![Capture18](https://github.com/user-attachments/assets/914a4c23-3b88-47b5-ab0c-7c68839f7ab7)
+
+![Capture19](https://github.com/user-attachments/assets/c0f2c0ab-43eb-42d2-9e8e-423e9cb16cdc)
+
+![Capture20](https://github.com/user-attachments/assets/df871ad6-a760-4fec-9f78-e4568669b488)
+
+![Capture21](https://github.com/user-attachments/assets/b5046d80-bfe8-4c76-a67b-578025b2940d)
 
 #### Semaine 5 :  
 Affinage, présentation et Demo Day
