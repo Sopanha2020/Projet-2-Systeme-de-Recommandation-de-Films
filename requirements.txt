@@ -1,7 +1,10 @@
-numpy
-pandas
-matplotlib
-seaborn
-scikit-learn
-nltk
-wordcloud
+streamlit==1.25.0
+streamlit-option-menu==0.3.2
+tmdbv3api==1.7.8
+pillow==10.0.0
+requests==2.31.0
+numpy==1.25.2
+pandas==2.1.0
+scikit-learn==1.3.1
+nltk==3.8.1
+wordcloud==1.9.2
