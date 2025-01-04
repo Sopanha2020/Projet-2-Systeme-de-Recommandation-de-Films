@@ -5,7 +5,7 @@ from tmdbv3api import TMDb, Movie, Discover
 from IPython.display import Image
 from PIL import Image
 import requests
-
+import faiss
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -126,176 +126,110 @@ if selection == "Accueil":
 
 elif selection == "Recherche": 
 
-  # Charger le dataframe (df) contenant les films
-  @st.cache_data
-  def load_data():
-      return pd.read_parquet('data.parquet')  # Remplacez par le chemin vers votre fichier
-  df = load_data()
-  # Préparer les données pour le modèle
-  @st.cache_data
-  def prepare_data(df):
-      # Colonnes textuelles
-      text_cols = ['overview', 'title', 'original_title', 'production_companies_name',
-                  'actor', 'director']
-      tfidf_matrices = [TfidfVectorizer().fit_transform(df[col].fillna('')).toarray() for col in text_cols]
-      tfidf_combined_dense = np.concatenate(tfidf_matrices, axis=1)
-      # Colonnes catégoriques
-      cat_cols = ['genres', 'original_language', 'production_countries', 'spoken_languages']
-      one_hot_encoded = pd.get_dummies(df[cat_cols], columns=cat_cols).values
-      # Colonnes numériques
-      num_cols = ['budget', 'popularity', 'revenue', 'runtime', 'vote_average', 'vote_count']
-      scaler = StandardScaler()
-      num_scaled = scaler.fit_transform(df[num_cols])
-      # Combiner toutes les caractéristiques
-      X_combined = np.concatenate([tfidf_combined_dense, one_hot_encoded, num_scaled], axis=1)
-      return X_combined
-  X_combined = prepare_data(df)
-  # Entraîner le modèle KNN
-  @st.cache_resource
-  def train_knn(X_combined):
-      knn_model = NearestNeighbors(metric='cosine', algorithm='brute')
-      knn_model.fit(X_combined)
-      return knn_model
-  knn_model = train_knn(X_combined)
-  # Fonction pour recommander des films
-  def recommend_movies_knn(movie_id, knn_model, df, X_combined, top_n=10):
-      try:
-          idx = df[df['imdb_id'] == movie_id].index[0]
-          distances, indices = knn_model.kneighbors(X_combined[idx].reshape(1, -1), n_neighbors=top_n + 1)
-          similar_movies = df.iloc[indices.flatten()[1:]]  # Exclure le film lui-même
-          return similar_movies[['imdb_id', 'title','poster_url','genres', 'actor', 'director']].drop_duplicates()  # Supprimer les doublons
-      except IndexError:
-          return None
+    # Load Data
+    @st.cache_data
+    def load_data():
+        return pd.read_parquet('data.parquet')  # Replace with your file path
 
-  # Interface Streamlit
-  st.title("Recommandation de films")
-  st.write("Choississez et entrez un titre ou un(e) acteur/actrice d'un film pour obtenir des recommandations.")
-  search_type = st.radio("Rechercher par :", ["Titre", "Acteur(trice)"])
+    df = load_data()
 
-  # Entrée utilisateur pour le titre du film
-  if search_type == "Titre":
-    movie_title = st.text_input("Titre du film", "")
-    if st.button("Recommander des films par le titre"):
-        if movie_title.strip() == "":
-            st.warning("Veuillez entrer un titre de film.")
+    # Prepare Data
+    @st.cache_data
+    def prepare_data(df):
+        # TF-IDF for text columns
+        text_cols = ['overview', 'title', 'original_title', 'production_companies_name', 'actor', 'director']
+        tfidf_vectors = [TfidfVectorizer(max_features=500).fit_transform(df[col].fillna('')).toarray() for col in text_cols]
+        tfidf_combined = np.hstack(tfidf_vectors)
+
+        # One-hot encoding for categorical columns
+        cat_cols = ['genres', 'original_language', 'production_countries', 'spoken_languages']
+        one_hot_encoded = pd.get_dummies(df[cat_cols], columns=cat_cols).values
+
+        # Scaled numerical columns
+        num_cols = ['budget', 'popularity', 'revenue', 'runtime', 'vote_average', 'vote_count']
+        num_scaled = StandardScaler().fit_transform(df[num_cols])
+
+        return np.hstack([tfidf_combined, one_hot_encoded, num_scaled])
+
+    X_combined = prepare_data(df)
+
+    # Train KNN Model
+    @st.cache_resource
+    def train_knn(X_combined):
+        model = NearestNeighbors(metric='cosine', algorithm='brute')
+        model.fit(X_combined)
+        return model
+
+    knn_model = train_knn(X_combined)
+
+    # Get Movie Poster and Comment
+    def get_movie_poster(movie_name):
+        movie_search = Movie()
+        search_results = movie_search.search(movie_name)
+        if search_results:
+            movie_id = search_results[0].id
+            movie_details = movie_search.details(movie_id)
+            poster_path = movie_details.poster_path
+            if poster_path:
+                return f"https://image.tmdb.org/t/p/w500/{poster_path}"
+        return None
+
+    def get_movie_comment(movie_name):
+        movie_search = Movie()
+        search_results = movie_search.search(movie_name)
+        if search_results:
+            movie_id = search_results[0].id
+            url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={tmdb.api_key}&language={tmdb.language}"
+            response = requests.get(url)
+            if response.status_code == 200:
+                return response.json().get('overview', 'Aucun résumé disponible.')
+        return "Résumé non disponible."
+
+    # Recommend Movies
+    def recommend_movies(movie_id, top_n=10):
+        try:
+            idx = df[df['imdb_id'] == movie_id].index[0]
+            distances, indices = knn_model.kneighbors(X_combined[idx].reshape(1, -1), n_neighbors=top_n + 1)
+            recommendations = df.iloc[indices.flatten()[1:]]
+            return recommendations[['imdb_id', 'title', 'poster_url', 'genres', 'actor', 'director']].drop_duplicates()
+        except IndexError:
+            return None
+
+    # Streamlit UI
+    st.title("Recommandation de films")
+    search_type = st.radio("Rechercher par :", ["Titre", "Acteur(trice)"])
+
+    # Search by Title or Actor
+    query = st.text_input(f"Entrez le {search_type.lower()} du film", "")
+    if st.button(f"Recommander des films par le {search_type.lower()}"):
+        if not query.strip():
+            st.warning(f"Veuillez entrer un(e) {search_type.lower()}.")
         else:
-            # Trouver le film dans le DataFrame
-            matching_movies = df[df['title'].str.contains(movie_title, case=False, na=False)]
-            if matching_movies.empty:
-                st.error("Désolé, aucun film trouvé avec ce titre.")
+            if search_type == "Titre":
+                matching_movies = df[df['title'].str.contains(query, case=False, na=False)]
             else:
-                # Utiliser le premier résultat correspondant pour la recommandation
+                matching_movies = df[df['actor'].str.contains(query, case=False, na=False)]
+
+            if matching_movies.empty:
+                st.error(f"Aucun film trouvé pour ce {search_type.lower()}.")
+            else:
                 selected_movie = matching_movies.iloc[0]
                 st.write(f"Recommandations pour : **{selected_movie['title']}**")
-                # Obtenir des recommandations
-                imdb_id = selected_movie['imdb_id']
-                recommended_movies = recommend_movies_knn(imdb_id, knn_model, df, X_combined, top_n=10)
-                movies = recommended_movies['title'].tolist()
-                if recommended_movies is not None and not recommended_movies.empty:               
-                  def get_movie_poster(movie_name):
-                      movie_search = Movie()
-                      search_results = movie_search.search(movie_name)  # Rechercher le film
-                      if search_results:
-                          movie_id = search_results[0].id
-                          movie_details = movie_search.details(movie_id)
-                          poster_path = movie_details.poster_path
-                          if poster_path:
-                              return f"https://image.tmdb.org/t/p/w500/{poster_path}"
-                      return None
-                  def get_movie_comment(movie_name):
-                  #Récupère le résumé du film.
-                    movie_search = Movie()
-                    search_results = movie_search.search(movie_name)
-                    if search_results:
-                      movie_id = search_results[0].id
-                      url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={tmdb.api_key}&language={tmdb.language}"
-                      response = requests.get(url)
-                      if response.status_code == 200:
-                          rep = response.json()
-                          return rep.get('overview', 'Aucun résumé disponible.')
-                    return "Résumé non disponible."
-                  
-                  for movie_name in movies:
-                    poster_url = get_movie_poster(movie_name)
-                    comment = get_movie_comment(movie_name)
+                recommended_movies = recommend_movies(selected_movie['imdb_id'])
+                if recommended_movies is not None and not recommended_movies.empty:
+                    for _, movie in recommended_movies.iterrows():
+                        poster_url = get_movie_poster(movie['title'])
+                        comment = get_movie_comment(movie['title'])
 
-                  # Organisation en colonnes : image à gauche, texte à droite
-                    col1, col2 = st.columns([1, 2])  # Largeur 1:2
-                    with col1:
-                      if poster_url:
-                        st.image(poster_url, caption=movie_name)
-                      else:
-                        st.write("Affiche non disponible")
-                    with col2:
-                      st.write(f"**{movie_name}**")
-                      st.write(comment)
-                else:
-                    st.error("Impossible de générer des recommandations pour ce film.")
-
-  else:
-    # Entrée utilisateur pour l'acteur du film
-    movie_actor = st.text_input("Acteur(trice) du film", "")
-    if st.button("Recommander des films par l'acteur(trice)"):
-        if movie_actor.strip() == "":
-            st.warning("Veuillez entrer un acteur de film.")
-        else:
-            # Trouver les films dans le DataFrame où l'acteur correspond
-            matching_movies = df[df['actor'].str.contains(movie_actor, case=False, na=False)]
-            if matching_movies.empty:
-                st.error("Désolé, aucun film trouvé avec cet acteur.")
-            else:
-                # Utiliser le premier résultat correspondant pour la recommandation
-                selected_movie = matching_movies.iloc[0]
-                # Extraire la partie de l'acteur correspondant au mot-clé
-                actor_names = selected_movie['actor'].split(', ')
-                matched_actor = next((actor for actor in actor_names if re.search(movie_actor, actor, re.IGNORECASE)), None)
-                # Afficher le nom de l'acteur correspondant
-                if matched_actor:
-                    st.write(f"Recommandations pour : **{matched_actor}**")
-                else:
-                    st.write(f"Recommandations pour : **{selected_movie['actor']}**")
-                # Afficher les premiers films de l'acteur
-                displayed_movies = matching_movies[['imdb_id', 'title','poster_url', 'genres', 'actor', 'director']].head(10)
-                movies = displayed_movies['title'].tolist()
-                if displayed_movies is not None and not displayed_movies.empty:
-                  def get_movie_poster(movie_name):
-                      movie_search = Movie()
-                      search_results = movie_search.search(movie_name)  # Rechercher le film
-                      if search_results:
-                          movie_id = search_results[0].id
-                          movie_details = movie_search.details(movie_id)
-                          poster_path = movie_details.poster_path
-                          if poster_path:
-                              return f"https://image.tmdb.org/t/p/w500/{poster_path}"
-                      return None
-                  
-                  def get_movie_comment(movie_name):
-                  #Récupère le résumé du film.
-                    movie_search = Movie()
-                    search_results = movie_search.search(movie_name)
-                    if search_results:
-                      movie_id = search_results[0].id
-                      url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={tmdb.api_key}&language={tmdb.language}"
-                      response = requests.get(url)
-                      if response.status_code == 200:
-                          rep = response.json()
-                          return rep.get('overview', 'Aucun résumé disponible.')
-                    return "Résumé non disponible."
-                  
-                  for movie_name in movies:
-                    poster_url = get_movie_poster(movie_name)
-                    comment = get_movie_comment(movie_name)
-
-                  # Organisation en colonnes : image à gauche, texte à droite
-                    col1, col2 = st.columns([1, 2])  # Largeur 1:2
-                    with col1:
-                      if poster_url:
-                        st.image(poster_url, caption=movie_name)
-                      else:
-                        st.write("Affiche non disponible")
-                    with col2:
-                      st.write(f"**{movie_name}**")
-                      st.write(comment)
+                        col1, col2 = st.columns([1, 2])
+                        with col1:
+                            if poster_url:
+                                st.image(poster_url, caption=movie['title'])
+                            else:
+                                st.write("Affiche non disponible")
+                        with col2:
+                            st.write(f"**{movie['title']}**")
+                            st.write(comment)
                 else:
                     st.error("Impossible de générer des recommandations pour ce film.")
 
@@ -311,33 +245,45 @@ elif  selection == "Notre Équipe":
           Rencontrez l’équipe talentueuse derrière notre succès :
       """)
 
-  # Create a container for the title and image
-  col1, col2 = st.columns([1, 2]) 
+# Create a container for the title and image
+  col1, col2 = st.columns([1, 2])
   with col1:
-      st.image(image4) 
+    st.image(image4)
   with col2:
-      st.text("**Jean Alain Delobelle** : Responsable des études de marché") 
+    st.markdown("**Jean Alain Delobelle** : Responsable des études de marché")
 
-  # Create a container for the title and image
-  col3, col4 = st.columns([1, 2]) 
+# Create a container for the title and image
+  col3, col4 = st.columns([1, 2])
   with col3:
-      st.image(image3) 
+    st.image(image3)
   with col4:
-      st.text("**Laetitia Palogo** : Chef de produit (En contact avec le client et l'équipe marketing)") 
+    st.markdown(
+        "**Laetitia Palogo** : Chef de produit <br>"
+        "(En contact avec le client et l'équipe marketing)", 
+        unsafe_allow_html=True
+    )
 
-  # Create a container for the title and image
-  col5, col6 = st.columns([1, 2]) 
+# Create a container for the title and image
+  col5, col6 = st.columns([1, 2])
   with col5:
-      st.image(image2) 
+    st.image(image2)
   with col6:
-      st.text("**Sopanha SAO** : Data Analysts (En contact avec l'équipe commerciale et le service financier)") 
-      
-  # Create a container for the title and image
-  col7, col8 = st.columns([1, 2]) 
+    st.markdown(
+        "**Sopanha SAO** : Data Analysts <br>"
+        "(En contact avec l'équipe commerciale et le service financier)", 
+        unsafe_allow_html=True
+    )
+
+# Create a container for the title and image
+  col7, col8 = st.columns([1, 2])
   with col7:
-      st.image(image1) 
+    st.image(image1)
   with col8:
-      st.text("**Riad Souyad** : Data Analysts (En contact avec le service technique et l'équipe juridique (si nécessaire))") 
+    st.markdown(
+        "**Riad Souyad** : Data Analysts <br>"
+        "(En contact avec le service technique et l'équipe juridique (si nécessaire))", 
+        unsafe_allow_html=True
+    )
 
 elif  selection == "Notre Site":
    
