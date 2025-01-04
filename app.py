@@ -2,11 +2,10 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import random
 from tmdbv3api import TMDb, Movie, Discover
-from IPython.display import Image, display
+from IPython.display import Image
 from PIL import Image
 import requests
-
-from sklearn.model_selection import train_test_split
+import faiss
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -14,30 +13,8 @@ import numpy as np
 import pandas as pd
 import re
 
-from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV, KFold
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import classification_report
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
-from sklearn.neighbors import NearestNeighbors
-from sklearn.decomposition import PCA
-from sklearn.linear_model import SGDClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.metrics import accuracy_score
-from sklearn.metrics.pairwise import cosine_similarity
-from nltk.corpus import stopwords, movie_reviews
-from nltk.tokenize import word_tokenize
-from nltk.stem import PorterStemmer
-from wordcloud import WordCloud
-from sklearn.naive_bayes import MultinomialNB
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer, CountVectorizer
-from sklearn.metrics.pairwise import linear_kernel
-
 tmdb = TMDb()
 tmdb.api_key = '59fa21d4a3485aae1e53d7cb4c21883e'
-API_KEY = '59fa21d4a3485aae1e53d7cb4c21883e'
 tmdb.language = "fr"
 
 # Load the image
@@ -54,15 +31,15 @@ with container:
         st.title("Projet 2 Moving Frame") 
     
 with st.sidebar :
-    st.title("La région ciblé") 
+    st.title("La région ciblée") 
     st.image("creuse.png")
     st.write("La mise en place du système de recommandation de films est faite pour le compte d'un gérant de cinéma de la Creuse pour lui permettre de sélectionner des films pour ses clients locaux. Les KPIs sont établis afin d'évaluer les films qui pourraient répondre aux préférences locales.") 
-    today = st.date_input("**Aujourd'hui**") 
+    
     st.subheader("Contactez-nous")
     with st.form("reply_form"):
         name = st.text_input("Nom")
         email = st.text_input("Email")
-        phone = st.text_input("Portable")
+        phone = st.text_input("Téléphone")
         message = st.text_area("Ecrivez un méssage")
         submitted = st.form_submit_button("Soumettre")
         if submitted:
@@ -152,7 +129,7 @@ elif selection == "Recherche":
   # Charger le dataframe (df) contenant les films
   @st.cache_data
   def load_data():
-      return pd.read_csv('df_imdb_tmdb_v2.csv')  # Remplacez par le chemin vers votre fichier
+      return pd.read_parquet('data.parquet')  # Remplacez par le chemin vers votre fichier
   df = load_data()
   # Préparer les données pour le modèle
   @st.cache_data
@@ -231,7 +208,7 @@ elif selection == "Recherche":
                     search_results = movie_search.search(movie_name)
                     if search_results:
                       movie_id = search_results[0].id
-                      url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}&language=fr"
+                      url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={tmdb.api_key}&language={tmdb.language}"
                       response = requests.get(url)
                       if response.status_code == 200:
                           rep = response.json()
@@ -298,7 +275,7 @@ elif selection == "Recherche":
                     search_results = movie_search.search(movie_name)
                     if search_results:
                       movie_id = search_results[0].id
-                      url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}&language=fr"
+                      url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={tmdb.api_key}&language={tmdb.language}"
                       response = requests.get(url)
                       if response.status_code == 200:
                           rep = response.json()
