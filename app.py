@@ -200,8 +200,8 @@ elif selection == "Recherche":
     search_type = st.radio("Rechercher par :", ["Titre", "Acteur(trice)"])
 
     # Search by Title or Actor
-    query = st.text_input(f"Entrez le {search_type.lower()} du film", "")
-    if st.button(f"Recommander des films par le {search_type.lower()}"):
+    query = st.text_input(f"Entrez un {search_type.lower()} du film", "")
+    if st.button(f"Recommander des films par un {search_type.lower()}"):
         if not query.strip():
             st.warning(f"Veuillez entrer un(e) {search_type.lower()}.")
         else:
