@@ -130,5 +130,5 @@ Outils principaux : google colab, google slide, streamlit
     ```
 5. Lancer l'application en local:
     ```sh
-    streamlit run index.py
+    streamlit run app.py
     ```
