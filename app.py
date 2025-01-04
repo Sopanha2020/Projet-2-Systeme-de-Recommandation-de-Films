@@ -5,7 +5,7 @@ from tmdbv3api import TMDb, Movie, Discover
 from IPython.display import Image
 from PIL import Image
 import requests
-import faiss
+
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 from sklearn.feature_extraction.text import TfidfVectorizer
