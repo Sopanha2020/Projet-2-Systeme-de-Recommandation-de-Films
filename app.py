@@ -33,7 +33,7 @@ with container:
 with st.sidebar :
     st.title("La région cible") 
     st.image("creuse.png")
-    st.write("La mise en place du système de recommandation de films est faite pour le compte d'un gérant de cinéma de la Creuse pour lui permettre de sélectionner des films pour ses clients locaux. Les KPIs sont établis afin d'évaluer les films qui pourraient répondre aux préférences locales.") 
+    st.write("La mise en place du système de recommandation de films est faite pour le compte de notre client, gérant de cinéma dans la Creuse pour lui permettre de sélectionner des films pour ses clients locaux. ") 
     
     st.subheader("Contactez-nous")
     with st.form("reply_form"):
