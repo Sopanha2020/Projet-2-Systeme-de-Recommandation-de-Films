@@ -206,7 +206,7 @@ elif selection == "Recherche":
         else:
             with st.spinner("Recherche en cours..."):
                 # Filter DataFrame (ensure 'df' has 'title' column)
-                matching_movies = df[df['title'].str.contains(query, case=False, na=False)]
+                matching_movies = df[df['title'] == query]
 
             if matching_movies.empty:
                 st.error("Aucun film trouvé pour ce titre.")
