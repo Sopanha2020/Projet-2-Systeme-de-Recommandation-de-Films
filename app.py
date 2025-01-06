@@ -197,25 +197,28 @@ elif selection == "Recherche":
 
     # Streamlit UI
     st.title("Recommandation de films")
-    search_type = st.radio("Rechercher par :", ["Titre", "Acteur(trice)"])
-
-    # Search by Title or Actor
-    query = st.text_input(f"Entrez un {search_type.lower()} du film", "")
-    if st.button(f"Recommander des films par un {search_type.lower()}"):
+    
+    # Search by Title
+    query = st.text_input("Entrez le titre du film", "")
+    if st.button("Recommander des films"):
         if not query.strip():
-            st.warning(f"Veuillez entrer un(e) {search_type.lower()}.")
+            st.warning("Veuillez entrer un titre de film.")
         else:
-            if search_type == "Titre":
+            with st.spinner("Recherche en cours..."):
+                # Filter DataFrame (ensure 'df' has 'title' column)
                 matching_movies = df[df['title'].str.contains(query, case=False, na=False)]
-            else:
-                matching_movies = df[df['actor'].str.contains(query, case=False, na=False)]
 
             if matching_movies.empty:
-                st.error(f"Aucun film trouvé pour ce {search_type.lower()}.")
+                st.error("Aucun film trouvé pour ce titre.")
             else:
-                selected_movie = matching_movies.iloc[0]
+                # Display all matches and let user choose
+                movie_titles = matching_movies['title'].tolist()
+                selected_title = st.selectbox("Sélectionnez un film :", movie_titles)
+                selected_movie = matching_movies[matching_movies['title'] == selected_title].iloc[0]
+
                 st.write(f"Recommandations pour : **{selected_movie['title']}**")
                 recommended_movies = recommend_movies(selected_movie['imdb_id'])
+
                 if recommended_movies is not None and not recommended_movies.empty:
                     for _, movie in recommended_movies.iterrows():
                         poster_url = get_movie_poster(movie['title'])
