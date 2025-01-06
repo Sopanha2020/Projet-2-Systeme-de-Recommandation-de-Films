@@ -69,7 +69,7 @@ if selection == "Accueil":
     st.write(""" 
         **Moving Frame vous présente les films à la Une.**
         
-        Vous ne trouvez pas votre Bonheur ? Pas de soucis ! Nous nous adaptons à vos envies.
+        Vous ne trouvez pas votre bonheur ? Pas de soucis ! Nous nous adaptons à vos envies.
         Passez à la page de recommandations.
     """)
   
