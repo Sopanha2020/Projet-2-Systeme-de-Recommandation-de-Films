@@ -309,4 +309,4 @@ elif  selection == "Notre Site":
     image5 = Image.open("groupe.jpg") 
     st.image(image5) 
 
-    st.write("Les résultats obtenus depuis le lancement de notre site de recommandations de films sont plus qu'encourageants. Le taux d'engagement des utilisateurs est en constante augmentation, tout comme le nombre de films visionnés suite à nos suggestions. De plus, les sondages de satisfaction montrent que nos utilisateurs sont très satisfaits de la qualité de nos recommandations, ce qui confirme la pertinence de notre approche.")
+    st.write("Habitants de la creuse, grâce à ce site vous aurez un cinéma qui s’adapte à vous, à vos envies du moment. Alors n’attendez-plus, testez !")
