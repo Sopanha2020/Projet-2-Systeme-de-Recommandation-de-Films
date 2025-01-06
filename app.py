@@ -41,7 +41,7 @@ with st.sidebar :
         email = st.text_input("Email")
         phone = st.text_input("Téléphone")
         message = st.text_area("Ecrivez votre message")
-        submitted = st.form_submit_button("Soumettre")
+        submitted = st.form_submit_button("Envoyer")
         if submitted:
             st.success("Mercie pour votre réponse!")
 
