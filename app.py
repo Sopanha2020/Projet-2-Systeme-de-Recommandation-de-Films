@@ -67,14 +67,12 @@ if selection == "Accueil":
     st.write("# Bienvenue sur notre site!")
 
     st.write(""" 
-        **Moving Frame comme Vision Dynamique**
+        **Moving Frame vous présente les films à la Une.**
         
-        Imaginez une grande fenêtre sur un paysage en constante évolution. Cette fenêtre, que nous appellerons le Moving Frame, n'est pas statique. 
-        Elle se déplace, s'ajuste et se réoriente en fonction des besoins du moment. 
-        Ce cadre mouvant permet d'attraper les meilleures vues possibles à tout instant.
-
+        Vous ne trouvez pas votre Bonheur ? Pas de soucis ! Nous nous adaptons à vos envies.
+        Passez à la page de recommandations.
     """)
-
+  
     # Initialize the Discover class
     discover = Discover()
 
