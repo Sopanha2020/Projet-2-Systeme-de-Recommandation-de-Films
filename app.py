@@ -199,39 +199,45 @@ elif selection == "Recherche":
     st.title("Recommandation de films")
     
     # Search by Title
-    query = st.text_input("Entrez le titre du film", "")
-    if st.button("Recommander des films"):
-        if not query.strip():
-            st.warning("Veuillez entrer un titre de film.")
+    st.write("Entrez l'acteur d'un film pour obtenir des recommandations.")
+    # Entrée utilisateur pour l'acteur du film
+    movie_actor = st.text_input("Acteur du film", "")
+    if st.button("Recommander des films par l'acteur"):
+        if movie_actor.strip() == "":
+            st.warning("Veuillez entrer un acteur de film.")
         else:
-            with st.spinner("Recherche en cours..."):
-                # Filter DataFrame (ensure 'df' has 'title' column)
-                matching_movies = df[df['title'] == query]
-
+            # Trouver les films dans le DataFrame où l'acteur correspond
+            matching_movies = df[df['actor'].str.contains(movie_actor, case=False, na=False)]
             if matching_movies.empty:
-                st.error("Aucun film trouvé pour ce titre.")
+                st.error("Désolé, aucun film trouvé avec cet acteur.")
             else:
-                # Display all matches and let user choose
-                movie_titles = matching_movies['title'].tolist()
-                selected_movie = matching_movies[matching_movies['title'] == movie_titles].iloc[0]
-
-                st.write(f"Recommandations pour : **{selected_movie['title']}**")
-                recommended_movies = recommend_movies(selected_movie['imdb_id'])
-
-                if recommended_movies is not None and not recommended_movies.empty:
-                    for _, movie in recommended_movies.iterrows():
-                        poster_url = get_movie_poster(movie['title'])
-                        comment = get_movie_comment(movie['title'])
-
-                        col1, col2 = st.columns([1, 2])
-                        with col1:
-                            if poster_url:
-                                st.image(poster_url, caption=movie['title'])
-                            else:
-                                st.write("Affiche non disponible")
-                        with col2:
-                            st.write(f"**{movie['title']}**")
-                            st.write(comment)
+                # Utiliser le premier résultat correspondant pour la recommandation
+                selected_movie = matching_movies.iloc[0]
+                # Extraire la partie de l'acteur correspondant au mot-clé
+                actor_names = selected_movie['actor'].split(', ')
+                matched_actor = next((actor for actor in actor_names if re.search(movie_actor, actor, re.IGNORECASE)), None)
+                # Afficher le nom de l'acteur correspondant
+                if matched_actor:
+                    st.write(f"Recommandations pour : **{matched_actor}**")
+                else:
+                    st.write(f"Recommandations pour : **{selected_movie['actor']}**")
+                # Afficher les premiers films de l'acteur
+                displayed_movies = matching_movies[['imdb_id', 'title','poster_url', 'genres', 'actor', 'director']].head(10)
+                if displayed_movies is not None and not displayed_movies.empty:
+                #st.write("Films recommandés :")
+                   # st.dataframe(displayed_movies)
+                   # Affichage des images en tableau (5 colonnes, 2 lignes)
+                    num_cols = 5  # Nombre de colonnes
+                    num_rows = 2  # Nombre de lignes
+                    total_images = num_cols * num_rows  # Total d'images à afficher
+                    # Limiter les images affichées au nombre requis
+                    images_to_display = displayed_movies['poster_url'][:total_images]
+                    # Affichage des images dans une grille
+                    cols = st.columns(num_cols)  # Crée 5 colonnes
+                    for poster, img_url in enumerate(images_to_display):
+                        col = cols[poster % num_cols]  # Sélectionne la colonne actuelle
+                        with col:
+                            st.image(img_url)  # Affiche l'image
                 else:
                     st.error("Impossible de générer des recommandations pour ce film.")
 
