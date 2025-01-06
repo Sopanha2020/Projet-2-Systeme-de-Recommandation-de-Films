@@ -74,7 +74,7 @@ Outils principaux : google colab, pandas, seaborn, matplotlib
 
 #### Semaine 4 :   
 Machine learning, recommandations    
-Outils principaux : google colab, scikit-learn, nlptk
+Outils principaux : google colab, scikit-learn, nltk
 
 ![Capture16](https://github.com/user-attachments/assets/5905b835-1e9d-4c3e-ab6a-a4e954f1c939)
 
