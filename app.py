@@ -186,7 +186,7 @@ elif selection == "Recherche":
         return "Résumé non disponible."
 
     # Recommend Movies
-    def recommend_movies(movie_id, top_n=10):
+    def recommend_movies(movie_id, top_n=5):
         try:
             idx = df[df['imdb_id'] == movie_id].index[0]
             distances, indices = knn_model.kneighbors(X_combined[idx].reshape(1, -1), n_neighbors=top_n + 1)
