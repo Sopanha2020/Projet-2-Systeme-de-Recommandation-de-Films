@@ -40,17 +40,17 @@ with st.sidebar :
         name = st.text_input("Nom")
         email = st.text_input("Email")
         phone = st.text_input("Téléphone")
-        message = st.text_area("Ecrivez un méssage")
+        message = st.text_area("Ecrivez un message")
         submitted = st.form_submit_button("Soumettre")
         if submitted:
             st.success("Mercie pour votre réponse!")
 
-    st.subheader("Postuler un commentaire")
+    st.subheader("Poster un commentaire")
     with st.form("comment_form"):
         comment = st.text_area("Votre commentaire")
-        submitted = st.form_submit_button("Postuler")
+        submitted = st.form_submit_button("Poster")
         if submitted:
-            st.success("Commentaire est postulé avec succès!") 
+            st.success("Commentaire est posté avec succès!") 
 
 
 selection = option_menu(
