@@ -213,8 +213,7 @@ elif selection == "Recherche":
             else:
                 # Display all matches and let user choose
                 movie_titles = matching_movies['title'].tolist()
-                selected_title = st.selectbox("Sélectionnez un film :", movie_titles)
-                selected_movie = matching_movies[matching_movies['title'] == selected_title].iloc[0]
+                selected_movie = matching_movies[matching_movies['title'] == movie_titles].iloc[0]
 
                 st.write(f"Recommandations pour : **{selected_movie['title']}**")
                 recommended_movies = recommend_movies(selected_movie['imdb_id'])
