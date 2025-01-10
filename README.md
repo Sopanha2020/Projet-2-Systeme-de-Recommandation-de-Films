@@ -24,7 +24,7 @@ Films appartenant aux genres :
    
 4. Notes des films :
 
-Score supérieur ou égal à 7 /10 sur les plateformes de notation (e.g., IMDb, TMDB).
+Score supérieur ou égal à 6 /10 sur les plateformes de notation (e.g., IMDb, TMDB).
 
 5. Durée des films :
 
