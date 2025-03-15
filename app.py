@@ -67,7 +67,7 @@ if selection == "Accueil":
     st.write("# Bienvenue sur notre site!")
 
     st.write(""" 
-        **Moving Frame vous présente les films à la Une.**
+        **Moving Frame vous présente les films à la une.**
         
         Vous ne trouvez pas votre bonheur ? Pas de soucis ! Nous nous adaptons à vos envies.
         Passez à la page de recommandations.
